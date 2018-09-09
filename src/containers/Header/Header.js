@@ -3,7 +3,7 @@ import logo from '../../logo.svg';
 import { NavLink } from 'react-router-dom';
 
 
-class Header extends Compontent {
+export default class Header extends Compontent {
   constructor(props) {
     super(props)
   }
@@ -22,6 +22,7 @@ class Header extends Compontent {
         </p>
         <aside>
         edits: {this.props.edits}
+        </aside>
       </div>
     )
   }
