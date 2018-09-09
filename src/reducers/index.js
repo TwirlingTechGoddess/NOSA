@@ -1,5 +1,5 @@
 import { annonymousReducer } from './annonymousReducer'
 
-export const rootReducer = ({
+export const rootReducer = () => ({
   reducer1: annonymousReducer
 })
