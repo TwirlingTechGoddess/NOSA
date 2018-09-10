@@ -16,11 +16,11 @@ class Header extends Component {
           <NavLink to='/'>
             <p>Home</p>
           </NavLink>
+          <img src={logo} className="App-logo" alt="logo" />
           <NavLink to='/debunks'>
             <p>Debunks:</p>
           </NavLink>
         </header>
-        <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Welcome to NOSA</h1>
         <p className="App-intro">
           Debunking NASA space images since 2018.
