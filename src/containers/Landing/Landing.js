@@ -13,7 +13,7 @@ class Landing extends Component {
  
  componentDidMount = async() => {
   const newArray = await fetchNasaPics()
-  await this.props.createPicArray(newArray)
+  this.props.createPicArray(newArray)
  }
 
  createPicArray = (array) => {
