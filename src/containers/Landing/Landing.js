@@ -5,9 +5,6 @@ import { addImages } from '../../actions/index.js';
 import { NavLink } from 'react-router-dom'
 
 class Landing extends Component {
-  constructor() {
-    super()
-  }
  
  componentDidMount = async() => {
   const images = await fetchNasaPics()
@@ -26,7 +23,7 @@ class Landing extends Component {
 
  render() {
   return(
-    <div>
+    <div className='Landing'>
       <NavLink to='/prints'>
         <button>PRINTS</button>
       </NavLink>
