@@ -1,7 +1,9 @@
-import { landingReducer } from './landingReducer';
+import { combineReducers } from 'redux';
+import { imagesReducer } from './imagesReducer';
 import { debunksReducer } from './debunksReducer';
 
-export const rootReducer = () => ({
-  landing: landingReducer,
+
+export const rootReducer = combineReducers({
+  images: imagesReducer,
   debunks: debunksReducer
 })

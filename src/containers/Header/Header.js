@@ -17,7 +17,7 @@ export default class Header extends Component {
           Debunks: {this.props.debunks}
         </NavLink>
         <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to Nosa</h1>
+        <h1 className="App-title">Welcome to NOSA</h1>
         <p className="App-intro">
           Debunking NASA space images since 2018.
         </p>

@@ -1,6 +1,6 @@
-export const createPicArray = (array) => {
+export const addImages = (images) => {
   return {
-    type: 'IMPORT_PICS',
-      array
+    type: 'ADD_IMAGES',
+      images
   };
 };
