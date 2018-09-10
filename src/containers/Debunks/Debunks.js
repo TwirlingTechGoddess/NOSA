@@ -7,6 +7,6 @@ export default class Debunks extends Component {
   }
 
   render() {
-    return this.state.map(image => <img src={image}/>)
+    return this.state.map(image => <img alt='' src={image}/>)
   }
 }
