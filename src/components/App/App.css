@@ -18,6 +18,11 @@
   font-size: 1.5em;
 }
 
+.App .pic {
+  height: 5rem;
+  width: 5rem;
+}
+
 .App-intro {
   font-size: large;
 }

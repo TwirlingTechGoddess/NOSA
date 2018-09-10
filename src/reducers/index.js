@@ -1,5 +1,7 @@
-import { annonymousReducer } from './annonymousReducer'
+import { landingReducer } from './landingReducer';
+import { debunksReducer } from './debunksReducer';
 
 export const rootReducer = () => ({
-  reducer1: annonymousReducer
+  landing: landingReducer,
+  debunks: debunksReducer
 })

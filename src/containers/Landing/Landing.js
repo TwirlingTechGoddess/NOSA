@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { fetchNasaPics } from '../../helpers/fetchCalls.js';
+import { connect } from 'react-redux';
 
-export default class Landing extends Component {
+class Landing extends Component {
   constructor() {
     super()
     this.state = {
-      pic: ''
+      pics: []
     }
   }
  
@@ -16,20 +17,28 @@ export default class Landing extends Component {
 
  changeToPic = (array) => {
   array.map(image => {
+    const newImage = `https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/${image}`
     return this.setState({
-      pic: image
+      pic: [...this.state.pics, newImage]
     })
+    console.log(this.state.pics)
   })
  }
 
  render() {
   return(
     <div>
-      <button type='submit' onSubmit={this.changeToPic}>PICS</button>
+      <button type='submit'>PICS</button>
       <button>ARTICLES</button>
       <button>MERCH</button>
-      <img className='pic' alt='' src={`https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/${this.state.pic}`}/>
+      <img className='pic' alt='' src={this.state.pics[0]}/>
     </div>
   )
  }
 }
+
+export const mapStateToProps = (state) => ({
+  pics: this.state
+})
+
+export default connect(mapStateToProps, null)(Landing)
