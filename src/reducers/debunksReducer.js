@@ -1,7 +1,7 @@
-export const debunksReducer = (state={}, action) => {
+export const debunksReducer = (state=[], action) => {
   switch (action.type) {
     case 'DEBUNKED_PIC' :
-      return action.newPics;
+      return action.images;
     default :
       return state
   }

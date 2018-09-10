@@ -26,9 +26,9 @@ class Landing extends Component {
  render() {
   return(
     <div>
+      <button>PRINT</button>
       <button type='submit'>PICS</button>
       <button>ARTICLES</button>
-      <button>MERCH</button>
     </div>
   )
  }
