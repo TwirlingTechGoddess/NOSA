@@ -1,30 +1,34 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
-export default class Header extends Component {
-
-
+class Header extends Component {
 
   render(){
     return(
-      <div>
-        <NavLink to='/'>
-          Home
-        </NavLink>
-        <NavLink to='/debunks'>
-          Debunks: {this.props.debunks}
-        </NavLink>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to Nosa</h1>
+      <div className="App-header">
+        <header>
+          <NavLink to='/'>
+            <p>Home</p>
+          </NavLink>
+          <img src={logo} className="App-logo" alt="logo" />
+          <NavLink to='/debunks'>
+            <p>Debunks:{this.props.debunks.length}</p>
+          </NavLink>
+        </header>
+        <h1 className="App-title">Welcome to NOSA</h1>
         <p className="App-intro">
           Debunking NASA space images since 2018.
         </p>
-        <aside>
-        edits: {this.props.edits}
-        </aside>
       </div>
     )
   }
 }
+
+export const mapStateToProps = (state) => ({
+  debunks: state.debunks
+})
+
+export default connect(mapStateToProps, null)(Header)

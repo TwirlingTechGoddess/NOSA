@@ -1,51 +1,40 @@
 import React, { Component } from 'react';
 import { fetchNasaPics } from '../../helpers/fetchCalls.js';
 import { connect } from 'react-redux';
-import { createPicArray } from '../../actions/index.js';
+import { addImages } from '../../actions/index.js';
+import { NavLink } from 'react-router-dom'
 
 class Landing extends Component {
-  constructor() {
-    super()
-    this.state = {
-      pics: []
-    }
-  }
  
  componentDidMount = async() => {
-  const newArray = await fetchNasaPics()
-  this.props.createPicArray(newArray)
- }
-
- createPicArray = (array) => {
-  array.map(image => {
-    const newImage = {url: `https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/${image}`, id: (Math.random() * Date.now()).toFixed(0)}
-    return this.setState({
-      pics: [...this.state.pics, newImage]
-    })
-    this.props.nasaImages = this.state.pics
-  })
-  console.log(this.state.pics)
+  const images = await fetchNasaPics()
+  await this.props.addImages(images)
  }
 
  render() {
   return(
-    <div>
-      <button type='submit'>PICS</button>
-      <button>ARTICLES</button>
-      <button>MERCH</button>
-      <img className='pic' alt='' src={this.state.pics[0]}/>
+    <div className='Landing'>
+      <NavLink to='/prints'>
+        <button>PRINTS</button>
+      </NavLink>
+      <NavLink to='/pics'>
+        <button type='submit'>PICS</button>
+      </NavLink>
+      <NavLink to='/articles'>
+        <button>ARTICLES</button>
+      </NavLink>
     </div>
   )
  }
 }
 
 export const mapStateToProps = (state) => ({
-  nasaImages: state.landingReducer,
+  images: state.images,
 
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  createPicArray: ((array) => dispatch(createPicArray(array))),
+  addImages: ((images) => dispatch(addImages(images))),
 })
 
 
