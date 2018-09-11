@@ -19,7 +19,7 @@ class App extends Component {
           <Route path="/articles" component={Articles} />
           <Route exact path="/" component={Landing} />
           <Route path="/debunks" component={Debunks} />
-        <Switch/>
+        </Switch>
       </div>
     );
   }
