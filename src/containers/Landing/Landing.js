@@ -12,15 +12,6 @@ class Landing extends Component {
   await this.props.addImages(images)
  }
 
- // createPicArray = (images) => {
- //  const newImageList = images.map(image => {
- //    const newImage = {url: `https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/${image}`, id: (Math.random() * Date.now()).toFixed(0)}
- //    return newImage
- //  })
- //    console.log(newImageList)
- //    return newImageList
- // }
-
  render() {
   return(
     <div className='Landing'>

@@ -1,6 +1,13 @@
 export const addImages = (images) => {
   return {
     type: 'ADD_IMAGES',
-      images
+    images
   };
 };
+
+export const addNosa = (pic) => {
+  return {
+    type: 'ADD_PIC',
+    pic
+  }
+}

@@ -15,7 +15,7 @@ class Header extends Component {
           </NavLink>
           <img src={logo} className="App-logo" alt="logo" />
           <NavLink to='/debunks'>
-            <p>Debunks:</p>
+            <p>Debunks:{this.props.debunks.length}</p>
           </NavLink>
         </header>
         <h1 className="App-title">Welcome to NOSA</h1>
@@ -27,8 +27,8 @@ class Header extends Component {
   }
 }
 
-export const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => ({
   debunks: state.debunks
-}
+})
 
 export default connect(mapStateToProps, null)(Header)
