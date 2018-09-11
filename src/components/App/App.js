@@ -6,18 +6,20 @@ import Pics from '../../containers/Pics/Pics';
 import Articles from '../Articles/Articles';
 import Landing from '../../containers/Landing/Landing';
 import Debunks from '../../containers/Debunks/Debunks';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header/>
-        <Route path="/prints" component={Prints} />
-        <Route path="/pics" component={Pics} />
-        <Route path="/articles" component={Articles} />
-        <Route exact path="/" component={Landing} />
-        <Route path="/debunks" component={Debunks} />
+        <Switch>
+          <Route path="/prints" component={Prints} />
+          <Route path="/pics" component={Pics} />
+          <Route path="/articles" component={Articles} />
+          <Route exact path="/" component={Landing} />
+          <Route path="/debunks" component={Debunks} />
+        <Switch/>
       </div>
     );
   }
