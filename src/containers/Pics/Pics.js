@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { addNosa } from '../../actions/index.js'
 
 class Pics extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      pic:{},
-      debunked: 'nosa'
+      pic: this.props.images[0],
+      debunked: 'yessa'
     }
   }
 
@@ -16,14 +16,15 @@ class Pics extends Component {
     const nextImage = this.props.images.find(image => {
       return image.id > this.state.pic.id
     })
-    // debugger
+    console.log(nextImage)
     this.setState({
-      pic: nextImage
+      pic: nextImage,
+      debunked: 'nosa'
     })
   }
 
   handleNosa = () => {
-    console.log('again')
+    console.log(this.state.pic)
     this.setState({
       debunked: 'yessa'
     })
@@ -33,7 +34,7 @@ class Pics extends Component {
   render () {
     return (
       <div className='Pics'>
-        <img className={this.state.debunked ? 'yessa' : 'nosa'} alt='' src={this.state.pic}/>
+        <img className={this.state.debunked} alt='' src={this.state.pic.url}/>
         <aside>
           <button onClick={this.handleYessa}>YESSA</button>
           <button onClick={this.handleNosa}>NOSA</button>

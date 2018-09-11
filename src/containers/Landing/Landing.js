@@ -8,7 +8,6 @@ class Landing extends Component {
  
  componentDidMount = async() => {
   const images = await fetchNasaPics()
-  // debugger
   await this.props.addImages(images)
  }
 
