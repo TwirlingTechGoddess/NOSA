@@ -121,3 +121,16 @@ article img {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.Prints {
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.Prints article {
+  height: 10rem;
+  width: 6rem;
+  border: .05rem solid navy;
+  color: grey;
+}

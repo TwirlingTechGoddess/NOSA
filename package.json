@@ -17,7 +17,9 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
+    "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -33,14 +35,10 @@
     "unit-coverage": "^4.0.3"
   },
   "jest": {
-    "setupFiles": ["jest-localstorage-mock"],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!src/index.js",
       "!src/registerServiceWorker.js"
     ]
   }
-}
-
-
 }
