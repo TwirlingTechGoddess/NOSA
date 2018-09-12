@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 class Prints extends Component {
   render() {
     return(
-      <div>
+      <div className="Prints">
         <article>Posters</article>
         <article>Post Cards</article>
         <article>Gift Cards</article>
