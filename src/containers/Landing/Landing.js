@@ -7,8 +7,12 @@ import { NavLink } from 'react-router-dom'
 class Landing extends Component {
  
  componentDidMount = async() => {
-  const images = await fetchNasaPics()
-  await this.props.addImages(images)
+  try {
+    const images = await fetchNasaPics()
+    await this.props.addImages(images)
+  } catch (error) {
+    return error.message
+  }
  }
 
  render() {

@@ -7,7 +7,7 @@ class Pics extends Component {
     super(props)
     this.state = {
       pic: this.props.images[0],
-      debunked: 'yessa'
+      debunked: 'nosa'
     }
   }
 
@@ -36,7 +36,7 @@ class Pics extends Component {
       <div className='Pics'>
         <img className={this.state.debunked} alt='' src={this.state.pic.url}/>
         <aside>
-          <button onClick={this.handleYessa}>YESSA</button>
+          <button onClick={this.handleYessa}>{this.state.debunked==='nosa' && 'YESSA' || 'NEXT'}</button>
           <button onClick={this.handleNosa}>NOSA</button>
         </aside>
       </div>
