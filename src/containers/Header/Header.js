@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -13,7 +12,7 @@ class Header extends Component {
           <NavLink to='/'>
             <p>Home</p>
           </NavLink>
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src='https://wiki.tfes.org/images/4/43/Map.png' className="App-logo" alt="logo" />
           <NavLink to='/debunks'>
             <p>Debunks:{this.props.debunks.length}</p>
           </NavLink>
