@@ -5,9 +5,9 @@ export const addImages = (images) => {
   };
 };
 
-export const addNosa = (pic) => {
+export const addDebunks = (pic) => {
   return {
-    type: 'ADD_PIC',
+    type: 'ADD_DEBUNKS',
     pic
   }
 }

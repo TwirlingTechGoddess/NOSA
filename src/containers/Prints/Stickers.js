@@ -2,9 +2,11 @@ import React from 'react';
 
 export const Stickers = () => {
   return(
+    <div>
       <div className="Stickers">
-        <h1>pic a debunk image for your card</h1>
-        <h2>enter editable text</h2>
       </div>
-    )
+      <button>Add Debunked Image</button>
+      <button>Add Text</button>
+    </div>
+  )
 }

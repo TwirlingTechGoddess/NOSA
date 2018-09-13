@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
-export default class Debunks extends Component {
+class Debunks extends Component {
   constructor() {
     super()
     this.state = []
   }
 
   render() {
-    return this.state.map(image => <img alt='' src={image}/>)
+    const newImages = this.props.debunks.map(image => <img className="yessa" alt='' src={image.url}/>)
+    return(
+      <div className='Pics'>
+        <section>{newImages}</section>
+        <NavLink to="/prints">Print Image</NavLink>
+
+      </div>
+    )
   }
 }
+
+const mapStatesToProps = (state) => ({
+  debunks: state.debunks
+})
+
+export default connect(mapStatesToProps, null)(Debunks)

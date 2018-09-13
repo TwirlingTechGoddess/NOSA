@@ -2,9 +2,11 @@ import React from 'react';
 
 export const PostCards = () => {
   return(
+    <div>
       <div className="PostCards">
-        <h1>pic a debunk image for your card</h1>
-        <h2>enter editable text</h2>
       </div>
-    )
+      <button>Add Debunked Image</button>
+      <button>Add Text</button>
+    </div>
+  )
 }

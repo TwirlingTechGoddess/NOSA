@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNosa } from '../../actions/index.js'
+import { addDebunks } from '../../actions/index.js';
+import { NavLink } from 'react-router-dom';
 
 class Pics extends Component {
   constructor(props) {
@@ -12,11 +13,9 @@ class Pics extends Component {
   }
 
   handleYessa = (images) => {
-    console.log('hittin')
     const nextImage = this.props.images.find(image => {
       return image.id > this.state.pic.id
     })
-    console.log(nextImage)
     this.setState({
       pic: nextImage,
       debunked: 'nosa'
@@ -24,11 +23,10 @@ class Pics extends Component {
   }
 
   handleNosa = () => {
-    console.log(this.state.pic)
     this.setState({
       debunked: 'yessa'
     })
-    this.props.addNosa([...this.props.debunks, this.state.pic])
+    this.props.addDebunks([...this.props.debunks, this.state.pic])
   }
 
   render () {
@@ -37,6 +35,7 @@ class Pics extends Component {
         <img className={this.state.debunked} alt='' src={this.state.pic.url}/>
         <aside>
           <button onClick={this.handleYessa}>{this.state.debunked==='nosa' && 'YESSA' || 'NEXT'}</button>
+          <NavLink to="/prints">Print Image</NavLink>
           <button onClick={this.handleNosa}>NOSA</button>
         </aside>
       </div>
@@ -50,7 +49,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addNosa: ((pic) => dispatch(addNosa(pic)))
+  addDebunks: ((pic) => dispatch(addDebunks(pic)))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps) (Pics)

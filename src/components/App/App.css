@@ -43,7 +43,7 @@
 }
 
 .Pics img {
-  margin-top: 2rem;
+  margin: 2rem;
   height: 28rem;
   width: 28rem;
 }
@@ -134,3 +134,13 @@ article img {
   border: .05rem solid navy;
   color: grey;
 }
+
+.GiftCards, .PostCards,
+.Posters, .Stickers {
+  width: 75vw;
+  height: 40vh;
+  border: .075rem solid navy;
+  margin: 2rem auto;
+}
+
+
