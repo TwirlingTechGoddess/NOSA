@@ -67,6 +67,10 @@ class Stickers extends Component {
     })
   }
 
+  printOut = () => {
+    window.print()
+  }
+
   render() {
     const newImages = this.props.debunks.map(image => <img onClick={() => this.addPicToPrint(image.url)} alt='' src={image.url}/>)
     return(
@@ -83,7 +87,7 @@ class Stickers extends Component {
         </div>
         <button onClick={this.toggleDebunksDisplay}>Show Debunked Images</button>
         <button onClick={this.changeText}>Change Text</button>
-        <button>PRINT</button>
+        <button onClick={this.printOut}>PRINT</button>
       </div>
     )
   }
