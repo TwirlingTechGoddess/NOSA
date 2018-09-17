@@ -5,7 +5,7 @@ import Prints from '../../containers/Prints/Prints';
 import { PostCards } from '../../containers/Prints/PostCards';
 import { Posters } from '../../containers/Prints/Posters';
 import { GiftCards } from '../../containers/Prints/GiftCards';
-import { Stickers } from '../../containers/Prints/Stickers';
+import Stickers from '../../containers/Prints/Stickers';
 import Pics from '../../containers/Pics/Pics';
 import Articles from '../Articles/Articles';
 import Landing from '../../containers/Landing/Landing';
