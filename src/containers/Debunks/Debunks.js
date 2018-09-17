@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 class Debunks extends Component {
-  constructor() {
-    super()
-    this.state = []
-  }
 
   render() {
     const newImages = this.props.debunks.map(image => <img className="yessa" alt='' src={image.url}/>)
@@ -14,14 +10,13 @@ class Debunks extends Component {
       <div className='Pics'>
         <section>{newImages}</section>
         <NavLink to="/prints">Print Image</NavLink>
-
       </div>
     )
   }
 }
 
-const mapStatesToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   debunks: state.debunks
 })
 
-export default connect(mapStatesToProps, null)(Debunks)
+export default connect(mapStateToProps, null)(Debunks)
