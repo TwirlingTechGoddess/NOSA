@@ -181,6 +181,7 @@ article img {
 } 
 
 .nope img {
+  cursor: copy;
   height: 7rem;
   width: 100%;
   margin: .5rem 0;
