@@ -34,8 +34,8 @@ class Pics extends Component {
       <div className='Pics'>
         <img className={this.state.debunked} alt='' src={this.state.pic.url}/>
         <aside>
-          <button onClick={this.handleYessa}>{this.state.debunked==='nosa' && 'YESSA' || 'NEXT'}</button>
-          <NavLink to="/prints">Print Image</NavLink>
+          <button className="yes-button" onClick={this.handleYessa}>{this.state.debunked==='nosa' && 'YESSA' || 'NEXT'}</button>
+          <NavLink className="no-button" to="/prints">Print Image</NavLink>
           <button onClick={this.handleNosa}>NOSA</button>
         </aside>
       </div>
