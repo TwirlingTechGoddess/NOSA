@@ -25,7 +25,7 @@ describe('Header', () => {
     })
   })
 
-  describe('mapState to props', () => {
+  describe('mapStateToProps', () => {
     it('should return a debunks object', () => {
       mockState = {
         debunks: [ { url: 'https://epic.gsfc.nasa.gov.png', id: 3 } ]

@@ -1,8 +1,6 @@
 import React from 'react';
 import { fetchNasaPics } from './fetchCalls';
 import { cleanPics } from'./helpers.js';
-import { shallow } from 'enzyme';
-import Landing from '../containers/Landing/Landing'
 
 describe('the fetchNasaPics function in the fetch calls file', () => {
   let mockResponse
@@ -58,7 +56,6 @@ describe('the fetchNasaPics function in the fetch calls file', () => {
   })
 
   it('calls the cleanPics callback after retrieving response', async () => {
-    // wrapper = shallow(<Landing/>)
     // cleanPics(mockResponse);
     mockEvent = jest.fn()
     // const mockCleanPIcs = jest.fn()

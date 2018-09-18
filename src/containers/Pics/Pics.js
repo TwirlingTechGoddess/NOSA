@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addDebunks } from '../../actions/index.js';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 class Pics extends Component {
   constructor(props) {
@@ -34,8 +36,8 @@ class Pics extends Component {
       <div className='Pics'>
         <img className={this.state.debunked} alt='' src={this.state.pic.url}/>
         <aside>
-          <button onClick={this.handleYessa}>{this.state.debunked==='nosa' && 'YESSA' || 'NEXT'}</button>
-          <NavLink to="/prints">Print Image</NavLink>
+          <button className="yes-button" onClick={this.handleYessa}>{this.state.debunked==='nosa' && 'YESSA' || 'NEXT'}</button>
+          <NavLink className="no-button" to="/prints">Print Image</NavLink>
           <button onClick={this.handleNosa}>NOSA</button>
         </aside>
       </div>
@@ -52,4 +54,10 @@ export const mapDispatchToProps = (dispatch) => ({
   addDebunks: ((pic) => dispatch(addDebunks(pic)))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps) (Pics)
+Pics.propTypes = {
+  images: PropTypes.array,
+  debunks: PropTypes.array,
+  addDebunks: PropTypes.func
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pics)

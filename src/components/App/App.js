@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from '../../containers/Header/Header';
-import Prints from '../../containers/Prints/Prints';
+import { Prints } from '../../containers/Prints/Prints';
 import { PostCards } from '../../containers/Prints/PostCards';
 import { Posters } from '../../containers/Prints/Posters';
 import { GiftCards } from '../../containers/Prints/GiftCards';

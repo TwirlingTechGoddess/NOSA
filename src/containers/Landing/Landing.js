@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { fetchNasaPics } from '../../helpers/fetchCalls.js';
 import { connect } from 'react-redux';
 import { addImages } from '../../actions/index.js';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Landing extends Component {
  
@@ -34,13 +35,15 @@ class Landing extends Component {
 
 export const mapStateToProps = (state) => ({
   images: state.images,
-
 })
 
 export const mapDispatchToProps = (dispatch) => ({
   addImages: ((images) => dispatch(addImages(images))),
 })
 
-
+Landing.propTypes = {
+  debunks: PropTypes.array,
+  addImages: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)

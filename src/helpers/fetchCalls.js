@@ -6,7 +6,6 @@ export const fetchNasaPics = async () => {
     const response = await fetch(url);
     const data = await response.json()
     const result = await cleanPics(data)
-    console.log(result)
     return Promise.all(result)
   } catch (error) {
     return error.message
