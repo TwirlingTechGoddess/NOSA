@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 
 class Header extends Component {
@@ -24,6 +26,10 @@ class Header extends Component {
       </div>
     )
   }
+}
+
+Header.propTypes = {
+  debunks: PropTypes.array
 }
 
 export const mapStateToProps = (state) => ({

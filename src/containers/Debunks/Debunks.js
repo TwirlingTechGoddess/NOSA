@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Debunks extends Component {
 
@@ -18,5 +19,9 @@ class Debunks extends Component {
 export const mapStateToProps = (state) => ({
   debunks: state.debunks
 })
+
+Debunks.propTypes = {
+  debunks: PropTypes.array
+}
 
 export default connect(mapStateToProps, null)(Debunks)

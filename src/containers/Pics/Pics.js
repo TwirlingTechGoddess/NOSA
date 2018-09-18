@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addDebunks } from '../../actions/index.js';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 class Pics extends Component {
   constructor(props) {
@@ -52,4 +54,10 @@ export const mapDispatchToProps = (dispatch) => ({
   addDebunks: ((pic) => dispatch(addDebunks(pic)))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps) (Pics)
+Pics.propTypes = {
+  images: PropTypes.array,
+  debunks: PropTypes.array,
+  addDebunks: PropTypes.func
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pics)

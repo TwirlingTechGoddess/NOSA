@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Stickers extends Component {
   constructor() {
@@ -96,5 +97,10 @@ class Stickers extends Component {
 }
 
 export const mapStateToProps = ({debunks}) => ({debunks})
+
+Stickers.propTypes = {
+  debunks: PropTypes.array,
+}
+
 
 export default connect(mapStateToProps, undefined)(Stickers)
