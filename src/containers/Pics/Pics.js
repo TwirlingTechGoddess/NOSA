@@ -28,7 +28,7 @@ export class Pics extends Component {
     this.setState({
       debunked: 'yessa'
     })
-    // this.props.addDebunks([...this.props.debunks, this.state.pic])
+    this.props.addDebunks([...this.props.debunks, this.state.pic])
   }
 
   render () {

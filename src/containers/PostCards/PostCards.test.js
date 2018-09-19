@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Stickers, mapStateToProps, changeText, toggleDebunksDisplay, addPicToPrint, printOut } from './Stickers';
+import { PostCards, mapStateToProps, changeText, toggleDebunksDisplay, addPicToPrint, printOut } from './PostCards';
 import { addDebunks } from '../../actions/index.js';
 
-describe('Stickers container', () => {
+describe('PostCards container', () => {
   let initial;
   let expected;
   let wrapper;
 
-  describe('Stickers component', () => {
-    wrapper = shallow(<Stickers />);
+  describe('PostCards component', () => {
+    wrapper = shallow(<PostCards />);
 
     it('should match the snapshot', () => {
       expect(wrapper).toMatchSnapshot()
@@ -66,7 +66,7 @@ describe('Stickers container', () => {
 
     it('should invoke changeText when change-text button is clicked', () => {
       const changeTextMock = jest.fn()
-      wrapper = mount(<Stickers changeText={changeTextMock}/>)
+      wrapper = mount(<PostCards changeText={changeTextMock}/>)
       wrapper.find('.change-text').simulate('click')
       expect(changeTextMock).toHaveBeenCalled()
     })
@@ -121,7 +121,7 @@ describe('Stickers container', () => {
       expect(addPicToPrint).toHaveBeenCalledWith(expected)
     })
 
-    it.only('should invoke printOut when the print-out button is clicked', () => {
+    it('should invoke printOut when the print-out button is clicked', () => {
       const mockEvent = jest.fn
       wrapper.instance().printOut(mockEvent);
       expect(printOut).toHaveBeenCalled()

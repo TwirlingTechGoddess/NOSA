@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from '../../containers/Header/Header';
-import { Prints } from '../../containers/Prints/Prints';
-import { PostCards } from '../../containers/Prints/PostCards';
-import { Posters } from '../../containers/Prints/Posters';
-import { GiftCards } from '../../containers/Prints/GiftCards';
-import Stickers from '../../containers/Prints/Stickers';
+import { Prints } from '../Prints/Prints';
+import PostCards from '../../containers/PostCards/PostCards';
+import Posters from '../../containers/Posters/Posters';
+import GiftCards from '../../containers/GiftCards/GiftCards';
+import Stickers from '../../containers/Stickers/Stickers';
 import Pics from '../../containers/Pics/Pics';
 import Articles from '../Articles/Articles';
 import Landing from '../../containers/Landing/Landing';
