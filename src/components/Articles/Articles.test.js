@@ -3,10 +3,9 @@ import { shallow } from 'enzyme';
 import Articles from './Articles';
 
 describe('Articles', () => {
-  let wrapper = shallow(<Articles/>)
-
+  const wrapper = shallow(<Articles />);
 
   it('should match the snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+    expect(wrapper).toMatchSnapshot();
+  });
+});

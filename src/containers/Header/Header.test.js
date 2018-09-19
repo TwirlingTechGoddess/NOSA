@@ -7,9 +7,9 @@ import { rootReducer } from '../../reducers/index';
 import Header, { mapStateToProps } from './Header';
 
 describe('Header', () => {
-  let wrapper
-  let mockState
-  let expected
+  let wrapper;
+  let mockState;
+  let expected;
 
   describe('React attributes of the Header component', () => {
     const mockStore = createStore(rootReducer);
@@ -18,25 +18,24 @@ describe('Header', () => {
       wrapper = shallow(
         <Provider store={mockStore}>
           <Header />
-        </Provider>
+        </Provider>,
       );
 
-      expect(wrapper).toMatchSnapshot()
-    })
-  })
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
 
   describe('mapStateToProps', () => {
     it('should return a debunks object', () => {
       mockState = {
-        debunks: [ { url: 'https://epic.gsfc.nasa.gov.png', id: 3 } ]
-      }
+        debunks: [{ url: 'https://epic.gsfc.nasa.gov.png', id: 3 }],
+      };
       expected = {
-        debunks: [ { url: 'https://epic.gsfc.nasa.gov.png', id: 3 } ]
-      }
+        debunks: [{ url: 'https://epic.gsfc.nasa.gov.png', id: 3 }],
+      };
 
-      const mappedProps = mapStateToProps(mockState)
-      expect(mappedProps).toEqual(mockState)
-    })
-  })
-
-})
+      const mappedProps = mapStateToProps(mockState);
+      expect(mappedProps).toEqual(mockState);
+    });
+  });
+});

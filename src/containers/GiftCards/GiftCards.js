@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-export class Stickers extends Component {
+export class GiftCards extends Component {
   constructor() {
     super()
     this.state = {
@@ -82,7 +82,7 @@ export class Stickers extends Component {
       <div>
         <div className="DebunksContainer">
           <div className = "TemplateContainer">
-            <div className="Stickers">
+            <div className="GiftCards">
               <h1 className="Joke">{this.state.default.title}</h1>
               <img className="current-pic" alt='' src={this.state.currentPrintPic} />
               <h3>{this.state.default.text}</h3>
@@ -92,7 +92,7 @@ export class Stickers extends Component {
             <button className="print-out" onClick={this.printOut}>PRINT</button>
           </div>
           <div className={this.state.hidden}>
-            // {newImages}
+            {newImages}
           </div>
         </div>
       </div>
@@ -102,9 +102,8 @@ export class Stickers extends Component {
 
 export const mapStateToProps = ({debunks}) => ({debunks})
 
-Stickers.propTypes = {
+GiftCards.propTypes = {
   debunks: PropTypes.array,
 }
 
-
-export default connect(mapStateToProps, null)(Stickers)
+export default connect(mapStateToProps, null)(GiftCards)
