@@ -14,7 +14,6 @@ describe('Prints', () => {
   });
 
   it('should return 4 articles', () => {
-
-    expect(wrapper.find('article').length).toEqual(4)
-  })
+    expect(wrapper.find('article').length).toEqual(4);
+  });
 });
