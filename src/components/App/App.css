@@ -144,6 +144,26 @@ article img {
   color: green;
   text-shadow: 2px 2px 2px orange; }
 
+.Stickers {
+  border-radius: .75rem;
+  width: 35rem; }
+
+.PostCards {
+  height: 70vh;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.GiftCards {
+  height: 60vh;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
 .DebunksContainer {
   display: flex;
   height: 73%; }
