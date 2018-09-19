@@ -1,27 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Stickers, { mapStateToProps, changeText, toggleDebunksDisplay, addPicToPrint, printOut } from './Stickers';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { rootReducer } from '../../reducers/index.js';
+import { shallow, mount } from 'enzyme';
+import { Stickers, mapStateToProps, changeText, toggleDebunksDisplay, addPicToPrint, printOut } from './Stickers';
 import { addDebunks } from '../../actions/index.js';
 
 describe('Stickers container', () => {
   let initial;
   let expected;
   let wrapper;
-  let mockStore = createStore(rootReducer);
-
 
   describe('Stickers component', () => {
-    beforeEach(() => {
-      wrapper = shallow(
-        <Provider store={mockStore}>
-          <Stickers />
-        </Provider>,
-        { disableLifecycleMethods: true }
-      );
-    })
+    wrapper = shallow(<Stickers />);
 
     it('should match the snapshot', () => {
       expect(wrapper).toMatchSnapshot()
@@ -33,10 +21,7 @@ describe('Stickers container', () => {
         text: '...if you think that the Earth is ROUND!??!',
         id: -1
       };
-      expected = 'YOU\'RE CRAZY!!!'
-      wrapper.setState({ mockState })
-      console.log(wrapper)
-      expect(wrapper.find('.joke')).toEqual(expected);
+      expect(wrapper.contains(mockState.title)).toEqual(true);
     });
 
     it('should have a default state of messages', () => {
@@ -62,13 +47,14 @@ describe('Stickers container', () => {
           id: 3
         }
       ];
-      initial = wrapper.state().messages;
+      initial = wrapper.state('messages')
       expect(initial).toEqual(expected);
     });
 
     it('should have a default state of currentPicPrint', () => {
+      wrapper.debug()
       expected = '';
-      initial = wrapper.state('currentPicPrint');
+      initial = wrapper.state('currentPrintPic');
       expect(initial).toEqual(expected);
     });
 
@@ -79,15 +65,10 @@ describe('Stickers container', () => {
     });
 
     it('should invoke changeText when change-text button is clicked', () => {
-      const spy = jest.spyOn(wrapper.instance(), 'mockChangeText');
-      wrapper.instance().forceUpdate();
-      const mockEvent = { target: {value: {
-        title: 'Knock Knock... Who\'s there?',
-        text: 'EARTH IS FLAT!!!',
-        id: 0
-      }}}
-      wrapper.find('change-text').simulate('click', mockEvent)
-      expect(spy).toHaveBeenCalled()
+      const changeTextMock = jest.fn()
+      wrapper = mount(<Stickers changeText={changeTextMock}/>)
+      wrapper.find('.change-text').simulate('click')
+      expect(changeTextMock).toHaveBeenCalled()
     })
 
     it('should update the state of default when changeText is invoked', () => {
@@ -108,33 +89,39 @@ describe('Stickers container', () => {
 
     it('should invoke toggleDebunksDisplay when the toggle-display button is clicked', () => {
       const mockEvent = jest.fn
-      wrapper.instance().toggleDebunksDisplay(mockEvent);
+      wrapper.find('.toggle-display').simulate('click')
       expect(toggleDebunksDisplay).toHaveBeenCalled()
     })
 
     it('should update the state of hidden when toggleDebunksDisplay is invoked', () => {
-      initial = wrapper.setState({ hidden: 'sure'})
-      const mockEvent = jest.fn()
-      toggleDebunksDisplay(mockEvent)
-      expected = { hidden: 'nope'}
-      expect(wrapper.state('hidden')).toEqual(expected)
+      initial = 'sure';
+      expected = 'nope';
+      wrapper.setState({ hidden: initial });
+      wrapper.instance().toggleDebunksDisplay();
+      expect(wrapper.state('hidden')).toEqual(expected);
     })
 
     it('should invoke addPicToPrint when the current-pic button is clicked', () => {
       const mockEvent = jest.fn
-      wrapper.instance().addPicToPrint(mockEvent);
+      wrapper.find('.add-pic').simulate('click');
       expect(addPicToPrint).toHaveBeenCalled()
     })
 
     it('should update the state of hidden when addPicToPrint is invoked', () => {
-      initial = wrapper.setState({ currentPic: ''})
-      const mockEvent = jest.fn()
-      addPicToPrint(mockEvent)
-      expected = { currentPic: "https://epic.gsfc.nasa.gov/archive/natural/2018/09/16/png/epic_1b_20180916003633.png"}
-      expect(wrapper.state('currentPic')).toEqual(expected)
+      initial = ''
+      expected = "https://epic.gsfc.nasa.gov/archive/natural/2018/09/16/png/epic_1b_20180916003633.png"
+      wrapper.setState({ currentPrintPic: initial })
+      wrapper.instance().addPicToPrint()
+      expect(wrapper.state('currentPrintPic')).toEqual(expected)
     })
 
-    it('should invoke printOut when the print-out button is clicked', () => {
+    it('should call addPicToPrint with the correct params', () => {
+      expected = "https://epic.gsfc.nasa.gov/archive/natural/2018/09/16/png/epic_1b_20180916003633.png"
+      wrapper.instance().addPicToPrint()
+      expect(addPicToPrint).toHaveBeenCalledWith(expected)
+    })
+
+    it.only('should invoke printOut when the print-out button is clicked', () => {
       const mockEvent = jest.fn
       wrapper.instance().printOut(mockEvent);
       expect(printOut).toHaveBeenCalled()

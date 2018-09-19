@@ -1,23 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Pics, { handleYessa, handleNosa, mapStateToProps, mapDispatchToProps } from './Pics';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { rootReducer } from '../../reducers/index.js';
+import { Pics, handleYessa, handleNosa, mapStateToProps, mapDispatchToProps } from './Pics';
 import { addDebunks } from '../../actions/index.js';
 
 describe('Pics container', () => {
   let wrapper;
-  let mockStore = createStore(rootReducer);
 
   describe('Pics component', () => {
-
     beforeEach(() => {
-      wrapper = (
-        <Provider store={mockStore}>
-          <Pics />
-        </Provider>
-      );
+      wrapper = shallow(<Pics />);
     })
 
     it('should match the snapshot', () => {
@@ -25,38 +16,42 @@ describe('Pics container', () => {
     })
 
     it('should invoke handleYessa when yes-button is clicked', () => {
+      console.log(wrapper)
       const mockEvent = jest.fn();
-      wrapper.find('.yes-button').simulate('click', { mockEvent });
-      wrapper.instance().handleYessa(mockEvent)
-      expect(mockEvent).toBeCalled();
+      wrapper.find('.yes-button').simulate('click', mockEvent );
+      expect(mockEvent).toHaveBeenCalled();
     });
 
     it('should update state when handleYessa is invoked', () => {
-      wrapper.setStat({url: 'https://epic.gsfc.nasa.gov.png', id: 3, text: ''});
+      const initial = {url: 'https://epic.gsfc.nasa.gov.png', id: 3, text: ''}
       const expected = {url: 'https://epic.crab.nasa.gov.png', id: 7, text: ''};
-      wrapper.instance().handleYessa(mockEvent)
-      expect(wrapper.state(pic)).toEqual(expected)
+      wrapper.setState({ pic: initial });
+      wrapper.instance().handleYessa()
+      expect(wrapper.state('pic')).toEqual(expected)
     })
 
     it('handleYessa should be called with the correct params', () => {
       const mockEvent = jest.fn()
-      const mockImages = [{url: 'https://epic.gsfc.nasa.gov.png', id: 3, text: ''}]
-      wrapper.dive().dive().instance().handleYessa(mockEvent)
-      expect(mockEvent).toHaveBeenCalledWith(mockImages)
+      const mockImages = [
+        {url: 'https://epic.gsfc.nasa.gov.png', id: 3, text: ''},
+        {url: 'https://epic.crab.nasa.gov.png', id: 7, text: ''}
+      ]
+      wrapper.instance().handleYessa()
+      expect('handleYessa').toHaveBeenCalledWith(mockImages)
     })
 
     it('should invoke handleNosa when no-button is clicked', () => {
       const mockEvent = jest.fn();
       wrapper.find('.no-button').simulate('click', { mockEvent });
-      wrapper.instance().handleNosa(mockEvent)
-      expect(mockEvent).toBeCalled();
+      expect(mockEvent).toHaveBeenCalled();
     });
 
     it('should update state when handleNosa is invoked', () => {
-      wrapper.setStat({url: 'https://epic.gsfc.nasa.gov.png', id: 3, text: ''});
-      const expected = {url: 'https://epic.crab.nasa.gov.png', id: 7, text: ''};
-      wrapper.instance().handleNosa(mockEvent)
-      expect(wrapper.state(pic)).toEqual(expected)
+      const initial = 'nosa'
+      const expected = 'yessa';
+      wrapper.setState({ debunked: initial });
+      wrapper.instance().handleNosa()
+      expect(wrapper.state('debunked')).toEqual(expected)
     })
   })
 
