@@ -4,19 +4,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 
-
 class Header extends Component {
-
-  render(){
-    return(
+  render() {
+    return (
       <div className="App-header">
         <header>
-          <NavLink to='/'>
+          <NavLink to="/">
             <p>Home</p>
           </NavLink>
-          <img src='https://wiki.tfes.org/images/4/43/Map.png' className="App-logo" alt="logo" />
-          <NavLink to='/debunks'>
-            <p>Debunks:{this.props.debunks.length}</p>
+          <img src="https://wiki.tfes.org/images/4/43/Map.png" className="App-logo" alt="logo" />
+          <NavLink to="/debunks">
+            <p>
+Debunks:
+              {this.props.debunks.length}
+            </p>
           </NavLink>
         </header>
         <h1 className="App-title">Welcome to NOSA</h1>
@@ -24,16 +25,16 @@ class Header extends Component {
           Debunking NASA space images since 2018.
         </p>
       </div>
-    )
+    );
   }
 }
 
 Header.propTypes = {
-  debunks: PropTypes.array
-}
+  debunks: PropTypes.array,
+};
 
-export const mapStateToProps = (state) => ({
-  debunks: state.debunks
-})
+export const mapStateToProps = state => ({
+  debunks: state.debunks,
+});
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(mapStateToProps, null)(Header);
