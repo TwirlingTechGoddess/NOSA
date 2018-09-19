@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
-class Pics extends Component {
+export class Pics extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -28,7 +28,7 @@ class Pics extends Component {
     this.setState({
       debunked: 'yessa'
     })
-    this.props.addDebunks([...this.props.debunks, this.state.pic])
+    // this.props.addDebunks([...this.props.debunks, this.state.pic])
   }
 
   render () {
@@ -36,7 +36,7 @@ class Pics extends Component {
       <div className='Pics'>
         <img className={this.state.debunked} alt='' src={this.state.pic.url}/>
         <aside>
-          <button className="yes-button" onClick={this.handleYessa}>{this.state.debunked==='nosa' && 'YESSA' || 'NEXT'}</button>
+          <button className="yes-button" onClick={this.handleYessa}>{this.state.debunked === 'nosa' && 'YESSA' || 'NEXT'}</button>
           <NavLink className="no-button" to="/prints">Print Image</NavLink>
           <button onClick={this.handleNosa}>NOSA</button>
         </aside>

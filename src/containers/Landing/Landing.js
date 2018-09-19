@@ -5,7 +5,7 @@ import { addImages } from '../../actions/index.js';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-class Landing extends Component {
+export class Landing extends Component {
  
  componentDidMount = async() => {
   try {

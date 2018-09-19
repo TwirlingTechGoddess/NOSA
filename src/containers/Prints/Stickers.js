@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-class Stickers extends Component {
+export class Stickers extends Component {
   constructor() {
     super()
     this.state = {
@@ -36,7 +36,7 @@ class Stickers extends Component {
       ],
 
       currentPrintPic: '',
-      hidden: 'sure'
+      hidden: 'sure',
     }
   }
 
@@ -64,7 +64,7 @@ class Stickers extends Component {
 
   addPicToPrint = (url) => {
     this.setState({
-      currentPic: url
+      currentPrintPic: url
     })
   }
 
@@ -73,14 +73,18 @@ class Stickers extends Component {
   }
 
   render() {
-    const newImages = this.props.debunks.map(image => <img className="current-pic" onClick={() => this.addPicToPrint(image.url)} alt='' src={image.url}/>)
+    const newImages = this.props.debunks.map(image => (
+      <img className="add-pic" 
+            onClick={() => this.addPicToPrint(image.url)} 
+            alt='' 
+            src={image.url}/>))
     return(
       <div>
         <div className="DebunksContainer">
           <div className = "TemplateContainer">
             <div className="Stickers">
               <h1 className="Joke">{this.state.default.title}</h1>
-              <img className="currentPrintPic" alt='' src={this.state.currentPic} />
+              <img className="current-pic" alt='' src={this.state.currentPrintPic} />
               <h3>{this.state.default.text}</h3>
             </div>
             <button className="toggle-display" onClick={this.toggleDebunksDisplay}>Show Debunked Images</button>
@@ -88,7 +92,7 @@ class Stickers extends Component {
             <button className="print-out" onClick={this.printOut}>PRINT</button>
           </div>
           <div className={this.state.hidden}>
-            {newImages}
+            // {newImages}
           </div>
         </div>
       </div>
@@ -103,4 +107,4 @@ Stickers.propTypes = {
 }
 
 
-export default connect(mapStateToProps, undefined)(Stickers)
+export default connect(mapStateToProps, null)(Stickers)

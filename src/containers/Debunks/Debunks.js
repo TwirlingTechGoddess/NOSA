@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-class Debunks extends Component {
+export class Debunks extends Component {
 
   render() {
     const newImages = this.props.debunks.map(image => <img className="yessa" alt='' src={image.url}/>)

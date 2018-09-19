@@ -1,22 +1,14 @@
 import React from 'react';
-import Debunks, { mapStateToProps } from './Debunks';
+import { Debunks, mapStateToProps } from './Debunks';
 import { shallow } from 'enzyme';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { rootReducer } from '../../reducers/index';
 
 
 describe('Debunks container', () => {
   let wrapper
-  let mockStore = createStore(rootReducer);
 
   describe('Debunks component', () => {
     beforeEach(() => {
-      wrapper = shallow(
-        <Provider store={mockStore}>
-          <Debunks />
-        </Provider>
-      )
+      wrapper = shallow(<Debunks />)
     })
 
     it('should match the snapshot', () => {
@@ -24,10 +16,8 @@ describe('Debunks container', () => {
     })
 
     it('should iterate over the debunks array and return an array of image elements', () => {
-      const mockState = {
-        debunks: [{url: 'https://epic.gsfc.nasa.gov.png', id: 3, text: ''}],
-      }
-      const expected = [<img className='yessa' src='https://epic.gsfc.nasa.gov.png'/>]
+      const mockState = {url: 'https://epic.gsfc.nasa.gov.png', id: 3, text: ''}
+      const expected = [<img className='yessa' src={mockState.url}/>]
       expect(wrapper.find('.yessa')).toEqual(1)
     })
   })

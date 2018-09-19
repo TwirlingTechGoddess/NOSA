@@ -1,23 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import Landing, { mapStateToProps, mapDispatchToProps } from './Landing';
-import { createStore } from 'redux';
-import { rootReducer } from '../../reducers/index.js';
-import { Provider } from 'react-redux';
+import { Landing, mapStateToProps, mapDispatchToProps } from './Landing';
 import { addImages } from '../../actions'
 
 describe('Landing container', () => {
   let wrapper
-  let mockStore = createStore(rootReducer);
 
   describe('Landing component', () => {
     it('should match the snapshot', () => {
-      wrapper = shallow(
-        <Provider store={mockStore}>
-          <Landing />
-        </Provider>
-      )
+      wrapper = shallow(<Landing />)
       expect(wrapper).toMatchSnapshot()
     })
   })
