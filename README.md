@@ -39,4 +39,4 @@ By default, the generated project uses the latest version of React.
 
 You can refer [to the React documentation](https://reactjs.org/docs/react-dom.html#browser-support) for more information about supported browsers.
 
-Author Lee Graham
+Authored Lee Graham
